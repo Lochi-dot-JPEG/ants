@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://df0nvkprfpyly"]
+
+[ext_resource type="Texture2D" uid="uid://ddoso6wc8px1o" path="res://entities/bounce/bounce-frame-1.tres" id="1_2e52l"]
+[ext_resource type="Texture2D" uid="uid://cj5k47a7120dl" path="res://entities/bounce/bounce-frame-2.tres" id="2_m5bqd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2e52l"]
+size = Vector2(16, 13)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6uhi2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_2e52l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_m5bqd")
+}],
+"loop": 0,
+"name": &"bounce",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_m5bqd")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Bounce" type="Area2D" unique_id=1107928726 groups=["bounce"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1460209003]
+position = Vector2(0, -1.5)
+shape = SubResource("RectangleShape2D_2e52l")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1755207281]
+unique_name_in_owner = true
+sprite_frames = SubResource("SpriteFrames_6uhi2")
+animation = &"bounce"
+autoplay = "default"
+frame = 1
+frame_progress = 1.0

@@ -2,6 +2,7 @@
 
 [ext_resource type="TileSet" uid="uid://ukv3dcv1s61c" path="res://locations/tileset.tres" id="1_kbyab"]
 [ext_resource type="PackedScene" uid="uid://dl74mgk0u80it" path="res://entities/player/player.tscn" id="2_750qp"]
+[ext_resource type="PackedScene" uid="uid://df0nvkprfpyly" path="res://entities/bounce/bounce.tscn" id="3_1pv6g"]
 
 [node name="TestArea" type="Node2D" unique_id=1530786571]
 
@@ -10,3 +11,6 @@ tile_map_data = PackedByteArray("AAD+/wQAAAADAAAAAAD//wQAAAADAAAAAAAAAAQAAAADAAA
 tile_set = ExtResource("1_kbyab")
 
 [node name="Player" parent="." unique_id=994365829 instance=ExtResource("2_750qp")]
+
+[node name="Bounce" parent="." unique_id=1107928726 instance=ExtResource("3_1pv6g")]
+position = Vector2(115, 27)

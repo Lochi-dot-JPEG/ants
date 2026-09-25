@@ -14,3 +14,10 @@ sprite_frames = ExtResource("1_symyc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1780821564]
 shape = SubResource("RectangleShape2D_ads0q")
+
+[node name="OverlapArea" type="Area2D" parent="." unique_id=1941459070]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="OverlapArea" unique_id=1781870281]
+shape = SubResource("RectangleShape2D_ads0q")
+
+[connection signal="area_entered" from="OverlapArea" to="." method="_on_overlap_area_area_entered"]
