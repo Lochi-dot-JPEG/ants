@@ -5,24 +5,27 @@ extends Area2D
 @onready var cursor = $LauncherCursor
 
 var active = true
-var launcher_dock : LauncherDock
+var launcher_dock: LauncherDock
+var camera: Camera2D
 
 const SPEED = 150
 
 func _ready() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	add_to_group("dock")
-	cursor.hide()
-
-
-func _dock(player: CharacterBody2D) -> void:
 	cursor.show()
-	player._freeze()
-	active = true
+	camera = Camera2D.new()
+	camera.anchor_mode = Camera2D.ANCHOR_MODE_FIXED_TOP_LEFT
+	add_child(camera)
+	camera.make_current()
+	_camera_to_bounds()
 
-func _undock(player: CharacterBody2D) -> void:
-	cursor.hide()
-	player._unfreeze()
-	active = false
+func _camera_to_bounds() -> void:
+	var bounds_rect = bounds.shape.get_rect() 
+	var center = bounds.global_position - (bounds_rect.size / 2)
+	print(center)
+	camera.global_position= center
+
 
 func _in_bounds(_position) -> bool:
 	var bounds_rect = bounds.shape.get_rect() 
@@ -43,8 +46,14 @@ func _clamp_in_bounds(_position :Vector2) -> Vector2:
 	return out
 
 
-func _physics_process(delta: float) -> void:
+func _input(event: InputEvent) -> void:
 	if not active:
 		return
-	var direction = Vector2(Input.get_axis("left", "right"),Input.get_axis("up", "down"))
-	cursor.global_position = _clamp_in_bounds(cursor.global_position + direction * delta * SPEED)
+	if event is InputEventMouseMotion:
+		if Input.is_action_pressed("drag"):
+			camera.global_position -= event.relative 
+		cursor.global_position = event.global_position + camera.global_position
+
+func _process(delta: float) -> void:
+	if not active:
+		return
