@@ -9,6 +9,7 @@ const JUMP_VELOCITY = -280.0
 const BOUNCE_VELOCITY = -500.0
 
 var camera : Camera2D
+var frozen := false
 @onready var sprite : AnimatedSprite2D = $AnimatedSprite2D
 @onready var overlap : Area2D = $OverlapArea
 
@@ -19,11 +20,16 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
+	if frozen:
+		return
 	camera.global_position = global_position #camera.global_position.lerp(global_position, delta * 15)
 	if abs(velocity.x) > SPEED/4:
 		sprite.flip_h = velocity.x > 0
 
 func _physics_process(delta: float) -> void:
+	if frozen:
+		return
+
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
@@ -41,9 +47,17 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
+func _unfreeze():
+	frozen = false
+
+func _freeze():
+	frozen = true
 
 func _on_overlap_area_area_entered(area: Area2D) -> void:
 	if area.is_in_group("bounce"):
 		velocity.y = BOUNCE_VELOCITY
 		area.get_node("%Sprite").play("bounce")
+		return
+	if area.is_in_group("dock"):
+		area._dock(self)
 		return

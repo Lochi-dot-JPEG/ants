@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://d35rxasspm6ps"]
+
+[ext_resource type="Script" uid="uid://cnvh6sjw0sj1o" path="res://entities/launcher/launcher_dock.gd" id="1_whw2b"]
+[ext_resource type="Texture2D" uid="uid://conskaqf1b8s" path="res://locations/tilemap.png" id="2_1xrty"]
+[ext_resource type="PackedScene" uid="uid://cvre6mklndipn" path="res://entities/launcher/launcher_cursor.tscn" id="3_xb37u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ads0q"]
+size = Vector2(20, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_db2pk"]
+atlas = ExtResource("2_1xrty")
+region = Rect2(0, 32, 32, 16)
+
+[node name="Dock" type="Area2D" unique_id=2056717388]
+script = ExtResource("1_whw2b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1154440048]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_ads0q")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=83335204]
+position = Vector2(0, -8)
+texture = SubResource("AtlasTexture_db2pk")
+
+[node name="LauncherCursor" parent="." unique_id=614680928 instance=ExtResource("3_xb37u")]

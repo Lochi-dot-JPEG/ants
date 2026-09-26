@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cvre6mklndipn"]
+
+[ext_resource type="Script" uid="uid://blpyv7nf4wixa" path="res://entities/launcher/launcher_cursor.gd" id="1_d3ob6"]
+[ext_resource type="Texture2D" uid="uid://q7bupcvbh4ar" path="res://entities/launcher/cursor.tres" id="2_vd5rq"]
+
+[node name="LauncherCursor" type="Node2D" unique_id=614680928]
+script = ExtResource("1_d3ob6")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=839684299]
+texture = ExtResource("2_vd5rq")

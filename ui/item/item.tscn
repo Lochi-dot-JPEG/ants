@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://bfxkr2ghs2k1e"]
+
+[ext_resource type="Texture2D" uid="uid://ikn4yk85hvsh" path="res://ui/item/item-a.tres" id="1_i77y8"]
+
+[node name="Item" type="VBoxContainer" unique_id=991165731]
+offset_right = 32.0
+offset_bottom = 59.0
+
+[node name="Button" type="Button" parent="." unique_id=1310108623]
+layout_mode = 2
+text = "Use this"
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1106588935]
+layout_mode = 2
+texture = ExtResource("1_i77y8")
+stretch_mode = 4

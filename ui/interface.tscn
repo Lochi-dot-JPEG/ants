@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://trcifh5rm7ih"]
+
+[ext_resource type="Theme" uid="uid://cwnk5k4r74p5s" path="res://ui/theme.tres" id="1_6ooai"]
+[ext_resource type="PackedScene" uid="uid://bfxkr2ghs2k1e" path="res://ui/item/item.tscn" id="1_ao8gb"]
+
+[node name="Interface" type="Control" unique_id=1974004815]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_6ooai")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1674205816]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Item" parent="HBoxContainer" unique_id=649721946 instance=ExtResource("1_ao8gb")]
+layout_mode = 2
+
+[node name="Item2" parent="HBoxContainer" unique_id=1962798040 instance=ExtResource("1_ao8gb")]
+layout_mode = 2
+
+[node name="Item3" parent="HBoxContainer" unique_id=845351637 instance=ExtResource("1_ao8gb")]
+layout_mode = 2
+
+[node name="Item4" parent="HBoxContainer" unique_id=1287552573 instance=ExtResource("1_ao8gb")]
+layout_mode = 2
