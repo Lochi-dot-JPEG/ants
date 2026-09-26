@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bfxkr2ghs2k1e" path="res://ui/item/item.tscn" id="1_ao8gb"]
 [ext_resource type="Script" uid="uid://dfos8ypnew5cb" path="res://ui/interface.gd" id="2_1kkh5"]
 
-[node name="Interface" type="Control" unique_id=1974004815]
+[node name="Interface" type="Control" unique_id=1974004815 node_paths=PackedStringArray("item_container")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,6 +13,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_6ooai")
 script = ExtResource("2_1kkh5")
+item_container = NodePath("MenuPanel/HBoxContainer")
 
 [node name="MenuPanel" type="PanelContainer" parent="." unique_id=1091636582]
 unique_name_in_owner = true

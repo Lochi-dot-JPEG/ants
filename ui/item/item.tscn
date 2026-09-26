@@ -1,10 +1,13 @@
 [gd_scene format=3 uid="uid://bfxkr2ghs2k1e"]
 
 [ext_resource type="Texture2D" uid="uid://ikn4yk85hvsh" path="res://ui/item/item-a.tres" id="1_i77y8"]
+[ext_resource type="Script" uid="uid://csclft5cjf4fd" path="res://ui/item/item.gd" id="1_vr0ti"]
 
-[node name="Item" type="VBoxContainer" unique_id=991165731]
+[node name="Item" type="VBoxContainer" unique_id=991165731 node_paths=PackedStringArray("button")]
 offset_right = 32.0
 offset_bottom = 59.0
+script = ExtResource("1_vr0ti")
+button = NodePath("Button")
 
 [node name="Button" type="Button" parent="." unique_id=1310108623]
 layout_mode = 2
