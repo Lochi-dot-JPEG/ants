@@ -2,21 +2,9 @@
 
 [ext_resource type="Script" uid="uid://ba6rap1jmgjw3" path="res://entities/creature/creature.gd" id="1_on7fs"]
 [ext_resource type="SpriteFrames" uid="uid://b37o3tka3pcg" path="res://entities/player/player.aseprite" id="2_rusqg"]
-[ext_resource type="Texture2D" uid="uid://conskaqf1b8s" path="res://locations/tilemap.png" id="3_wvp24"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_how2o"]
 size = Vector2(16, 20)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ads0q"]
-atlas = ExtResource("3_wvp24")
-region = Rect2(88, 0, 8, 8)
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7otxv"]
-particle_flag_disable_z = true
-spread = 180.0
-initial_velocity_min = 2.0
-initial_velocity_max = 3.0
-gravity = Vector3(0, 0, 0)
 
 [node name="Creature" type="CharacterBody2D" unique_id=213466299]
 collision_layer = 2
@@ -27,23 +15,13 @@ sprite_frames = ExtResource("2_rusqg")
 animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1133419133]
-position = Vector2(0, 2)
+position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_how2o")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=171771621]
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" unique_id=305007411]
-position = Vector2(0, 2)
+position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_how2o")
-
-[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=736428518]
-modulate = Color(1, 1, 1, 0.30588236)
-z_index = -1
-emitting = false
-amount = 128
-texture = SubResource("AtlasTexture_ads0q")
-lifetime = 5.0
-visibility_rect = Rect2(-100, -100, 800, 800)
-process_material = SubResource("ParticleProcessMaterial_7otxv")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

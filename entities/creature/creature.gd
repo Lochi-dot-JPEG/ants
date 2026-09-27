@@ -58,6 +58,7 @@ func _run_physics_process(delta : float) -> void:
 func _swing_physics_process(delta : float) -> void:
 	swing_time += delta
 	if swing_time > SWING_LENGTH:
+		Sound._play_sound("swing",-5)
 		state = State.WALKING
 		velocity.x = SWING_LAUNCH.x * aim_direction 
 		velocity.y = SWING_LAUNCH.y
@@ -99,6 +100,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		velocity.y = BOUNCE_VELOCITY
 		velocity.x /= 5
 		area.get_node("%Sprite").play("bounce")
+		Sound._play_sound("bounce",0)
 		return
 
 	if area.is_in_group("swing"):

@@ -1,6 +1,7 @@
 extends Node
 
 signal add_item(item)
+signal run_test
 
 class ItemInfo:
 	var texture : Texture2D
@@ -48,6 +49,7 @@ var items : Dictionary[Items, ItemInfo] = {
 		preload("res://entities/bomb/bomb.tscn"),
 	),
 }
+
 func _next_level() -> void:
 	_open_level(current_level_number + 1)
 

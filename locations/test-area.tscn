@@ -7,12 +7,17 @@
 [ext_resource type="Texture2D" uid="uid://cnrlprw5dv0jo" path="res://locations/background4.png" id="5_tjwwu"]
 [ext_resource type="Texture2D" uid="uid://bc0u14ww4jol7" path="res://locations/background3.png" id="6_8s2ih"]
 [ext_resource type="Texture2D" uid="uid://ttjy2ygcv410" path="res://locations/background2.png" id="7_lowpg"]
+[ext_resource type="Texture2D" uid="uid://conskaqf1b8s" path="res://locations/tilemap.png" id="8_8s2ih"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ads0q"]
 size = Vector2(480, 228.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_db2pk"]
 size = Vector2(2328, 168)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ads0q"]
+atlas = ExtResource("8_8s2ih")
+region = Rect2(96, 0, 16, 16)
 
 [node name="TestArea" type="Node2D" unique_id=1530786571]
 
@@ -77,3 +82,17 @@ position = Vector2(0, 184)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Out" unique_id=364692040]
 position = Vector2(436, 76)
 shape = SubResource("RectangleShape2D_db2pk")
+
+[node name="ParallaxLayer" type="Parallax2D" parent="Out" unique_id=1259268857]
+z_index = 2
+repeat_size = Vector2(16, 0)
+repeat_times = 128
+
+[node name="Sprite2D" type="Sprite2D" parent="Out/ParallaxLayer" unique_id=1548234203]
+position = Vector2(0, -8)
+texture = SubResource("AtlasTexture_ads0q")
+
+[node name="ColorRect" type="ColorRect" parent="Out/ParallaxLayer" unique_id=1572322874]
+offset_right = 16.0
+offset_bottom = 280.0
+color = Color(0.4392157, 0.26666668, 0.22745098, 1)

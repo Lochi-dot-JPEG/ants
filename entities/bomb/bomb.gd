@@ -8,4 +8,5 @@ func _explode() -> void:
 		if area.is_in_group("swing"):
 			area.queue_free()
 			Load.add_item.emit(Load.Items.SWING)
+	Sound._play_sound("plode",-10)
 

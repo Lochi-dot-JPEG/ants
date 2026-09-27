@@ -24,6 +24,7 @@ func _ready() -> void:
 	cursor.show()
 	camera = Camera2D.new()
 	camera.anchor_mode = Camera2D.ANCHOR_MODE_FIXED_TOP_LEFT
+	Load.run_test.connect(_test)
 	add_child(camera)
 	camera.make_current()
 	_camera_to_bounds()
@@ -33,6 +34,7 @@ func _end_test():
 	testend.emit()
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	cursor.show()
+	Sound._play_sound("fall",0)
 
 func _process(_delta: float) -> void:
 	if testing:

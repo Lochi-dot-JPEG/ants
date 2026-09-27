@@ -64,6 +64,12 @@ text = "back"
 layout_mode = 2
 size_flags_horizontal = 8
 
+[node name="Play" type="Button" parent="MenuPanel/MarginContainer/HBoxContainer/VBoxContainer" unique_id=295559518]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+text = "release"
+
 [node name="Restart" type="Button" parent="MenuPanel/MarginContainer/HBoxContainer/VBoxContainer" unique_id=554901071]
 unique_name_in_owner = true
 layout_mode = 2

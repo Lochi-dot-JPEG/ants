@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Load="*uid://bfmlb72jcvvw7"
+Sound="*uid://61vh2evwfye5"
 
 [display]
 

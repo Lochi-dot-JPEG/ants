@@ -30,6 +30,7 @@ func _ready() -> void:
 	title_button.pressed.connect(_exit)
 
 	%TestOver.pressed.connect(dock._end_test)
+	%Play.pressed.connect(Load.run_test.emit)
 
 	Load.add_item.connect(_increase_item)
 
