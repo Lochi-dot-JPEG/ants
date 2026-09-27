@@ -23,3 +23,6 @@ position = Vector2(0, -8)
 texture = SubResource("AtlasTexture_db2pk")
 
 [node name="LauncherCursor" parent="." unique_id=614680928 instance=ExtResource("3_xb37u")]
+
+[node name="CreatureSpawn" type="Marker2D" parent="." unique_id=1705461957]
+position = Vector2(0, -20)

@@ -10,6 +10,7 @@ class ItemInfo:
 		item_node = _node
 
 const mouse = preload("res://ui/mouse.tres")
+const creature = preload("res://entities/creature/creature.tscn")
 
 enum Items {BOUNCE,SWING}
 

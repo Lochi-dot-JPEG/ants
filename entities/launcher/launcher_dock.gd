@@ -1,14 +1,17 @@
 class_name LauncherDock
 extends Area2D
 
+const SPEED = 150
+
 @export var bounds : CollisionShape2D
-@onready var cursor = $LauncherCursor
 
 var active = true
 var launcher_dock: LauncherDock
 var camera: Camera2D
+var creatures = []
 
-const SPEED = 150
+@onready var spawn : Node2D = $CreatureSpawn
+@onready var cursor = $LauncherCursor
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
@@ -19,6 +22,18 @@ func _ready() -> void:
 	add_child(camera)
 	camera.make_current()
 	_camera_to_bounds()
+
+
+func _input(event: InputEvent) -> void:
+	if not active:
+		return
+	if event.is_action_pressed("test"):
+		_test()
+	if event is InputEventMouseMotion:
+		if Input.is_action_pressed("drag"):
+			camera.global_position -= event.relative 
+		cursor.global_position = event.global_position + camera.global_position
+
 
 func _camera_to_bounds() -> void:
 	var bounds_rect = bounds.shape.get_rect() 
@@ -46,14 +61,9 @@ func _clamp_in_bounds(_position :Vector2) -> Vector2:
 	return out
 
 
-func _input(event: InputEvent) -> void:
-	if not active:
-		return
-	if event is InputEventMouseMotion:
-		if Input.is_action_pressed("drag"):
-			camera.global_position -= event.relative 
-		cursor.global_position = event.global_position + camera.global_position
-
-func _process(delta: float) -> void:
-	if not active:
-		return
+func _test() -> void:
+	var new_creature = Load.creature.instantiate()
+	creatures.append(new_creature)
+	get_node("..").add_child(new_creature)
+	new_creature.global_position = spawn.global_position
+	new_creature._move_in_direction(1)
