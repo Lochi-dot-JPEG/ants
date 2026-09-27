@@ -19,6 +19,9 @@ func _Set_Amount(new_amount : int) -> void:
 
 func _Update_Text() -> void:
 	button.text = Load.items[type].name + ": " + str(amount)
+	if type == Load.Items.BOMB:
+		amount = 10
+		button.text = "Delete"
 
 func _Set_Text(text) -> void:
 	$Button.text = text

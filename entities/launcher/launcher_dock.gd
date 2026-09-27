@@ -2,6 +2,8 @@ class_name LauncherDock
 extends Area2D
 
 signal win
+signal teststart
+signal testend
 
 const SPEED = 150
 
@@ -11,6 +13,7 @@ var active = true
 var launcher_dock: LauncherDock
 var camera: Camera2D
 var creatures = []
+var testing = false
 
 @onready var spawn : Node2D = $CreatureSpawn
 @onready var cursor = $LauncherCursor
@@ -25,8 +28,22 @@ func _ready() -> void:
 	camera.make_current()
 	_camera_to_bounds()
 
+func _end_test():
+	testing = false
+	testend.emit()
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+	cursor.show()
+
+func _process(_delta: float) -> void:
+	if testing:
+		if creatures.is_empty() or not creatures[0]:
+			_end_test()
+			return
+		camera.global_position = creatures[0].global_position - Vector2(240,160)
 
 func _input(event: InputEvent) -> void:
+	if testing:
+		return
 	if not active:
 		return
 	if event.is_action_pressed("test"):
@@ -64,14 +81,25 @@ func _clamp_in_bounds(_position :Vector2) -> Vector2:
 
 
 func _test() -> void:
-	var new_creature = Load.creature.instantiate()
-	creatures.append(new_creature)
-	get_node("..").add_child(new_creature)
-	new_creature.global_position = spawn.global_position
-	new_creature._move_in_direction(1)
-	new_creature.win.connect(_win.bind(new_creature))
+	for i in creatures:
+		if i:
+			i.queue_free()
+	creatures = []
+	testing = true
+	teststart.emit()
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	cursor.hide()
+	for i in range(3):
+		var new_creature = Load.creature.instantiate()
+		creatures.append(new_creature)
+		get_node("..").add_child(new_creature)
+		new_creature.global_position = spawn.global_position
+		new_creature._move_in_direction(1)
+		new_creature.win.connect(_win.bind(new_creature))
+		await get_tree().create_timer(0.5).timeout
 
 func _win(creature) -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	win.emit()
 	for i in creatures:
 		i.aim_direction = 0

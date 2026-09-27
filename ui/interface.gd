@@ -18,16 +18,42 @@ var selected_item: Load.Items
 @onready var title_button : Button = %Title
 
 func _ready() -> void:
-	Input.set_custom_mouse_cursor(Load.mouse)
-	panel.mouse_entered.connect(_mouse_on_panel.bind(true))
-	panel.mouse_exited.connect(_mouse_on_panel.bind(false))
+	#panel.mouse_entered.connect(_mouse_on_panel.bind(true))
+	#panel.mouse_exited.connect(_mouse_on_panel.bind(false))
 	_add_items_to_panel()
 	restart.pressed.connect(_restart)
 	exit.pressed.connect(_exit)
 	dock.win.connect(_win)
+	dock.teststart.connect(_start_test)
+	dock.testend.connect(_end_test)
 	next_button.pressed.connect(Load._next_level)
 	title_button.pressed.connect(_exit)
+
+	%TestOver.pressed.connect(dock._end_test)
+
+	Load.add_item.connect(_increase_item)
+
 	win_label.hide()
+
+
+
+func _process(_delta: float) -> void:
+	if not panel.visible:
+		return
+	if get_global_mouse_position().y > panel.global_position.y:
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	else:
+		Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+
+
+func _start_test():
+	%TestOver.show()
+	%Items.hide()
+
+
+func _end_test():
+	%TestOver.hide()
+	%Items.show()
 
 
 func _win() -> void:
@@ -62,6 +88,12 @@ func _add_items_to_panel():
 			first_item = new_item
 
 
+func _increase_item(item : Load.Items):
+	for i in item_container.get_children():
+		if i is ItemPanel and i.type == item:
+			i._Set_Amount(i.amount+1)
+
+
 func _select_item(item_node : ItemPanel):
 	if selected_item_panel != null:
 		selected_item_panel._Set_Highlight(false)
@@ -74,11 +106,11 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("shoot"):
 		_shoot_item()
 
-func _mouse_on_panel(is_on):
-	if is_on:
-		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	else:
-		Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+#func _mouse_on_panel(is_on):
+#	if is_on:
+#		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+#	else:
+#		Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 
 
 func _restart(): 

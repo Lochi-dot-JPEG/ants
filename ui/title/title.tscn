@@ -69,6 +69,7 @@ grow_vertical = 2
 [node name="Label" type="Label" parent="CanvasLayer/Control/Menu" unique_id=971266468]
 layout_mode = 2
 text = "Game name here"
+horizontal_alignment = 1
 
 [node name="Play" type="Button" parent="CanvasLayer/Control/Menu" unique_id=744165612]
 unique_name_in_owner = true

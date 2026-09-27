@@ -1,5 +1,7 @@
 extends Node
 
+signal add_item(item)
+
 class ItemInfo:
 	var texture : Texture2D
 	var name : String
@@ -18,8 +20,15 @@ enum Items {BOUNCE,SWING,BOMB}
 var current_level_number = 0
 
 const levels = [
+	"res://locations/lvl-3.tscn",
+	"res://locations/lvl-2.tscn",
 	"res://locations/lvl-1.tscn",
-	"res://locations/test-area.tscn",
+	"res://locations/lvl-4.tscn",
+	"res://locations/lvl-5.tscn",
+	"res://locations/lvl-6.tscn",
+	"res://locations/lvl-7.tscn",
+	"res://locations/lvl-8.tscn",
+	#"res://locations/test-area.tscn",
 ]
 
 var items : Dictionary[Items, ItemInfo] = {

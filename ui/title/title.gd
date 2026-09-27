@@ -6,7 +6,6 @@ func _ready() -> void:
 	%Levels.pressed.connect(_levels)
 	%Play.pressed.connect(_play)
 	%Back.pressed.connect(_back)
-	%Play.pressed.connect(_play)
 	for level in Load.levels.size():
 		var _button = Button.new()
 		_button.text = str(level)

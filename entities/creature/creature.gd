@@ -109,3 +109,5 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		swing_origin = area.global_position
 	if area.is_in_group("goal"):
 		win.emit()
+	if area.is_in_group("out"):
+		queue_free()
