@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://cnfx5dxt4ojgb"]
+
+[ext_resource type="Texture2D" uid="uid://conskaqf1b8s" path="res://locations/tilemap.png" id="1_6xcja"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6xcja"]
+size = Vector2(16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dmkwb"]
+atlas = ExtResource("1_6xcja")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mhrrt"]
+atlas = ExtResource("1_6xcja")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ads0q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dmkwb")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mhrrt")
+}],
+"loop": 1,
+"name": &"picked",
+"speed": 5.0
+}]
+
+[node name="Goal" type="Area2D" unique_id=51641979 groups=["goal"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2141394511]
+position = Vector2(0, -12)
+shape = SubResource("RectangleShape2D_6xcja")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1888243864]
+unique_name_in_owner = true
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_ads0q")
+animation = &"picked"

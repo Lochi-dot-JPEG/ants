@@ -37,10 +37,13 @@ position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_how2o")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=736428518]
+modulate = Color(1, 1, 1, 0.30588236)
+z_index = -1
 emitting = false
 amount = 128
 texture = SubResource("AtlasTexture_ads0q")
 lifetime = 5.0
+visibility_rect = Rect2(-100, -100, 800, 800)
 process_material = SubResource("ParticleProcessMaterial_7otxv")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

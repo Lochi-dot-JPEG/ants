@@ -1,27 +1,34 @@
 extends Control
 
-@onready var panel :PanelContainer= %MenuPanel
+const ITEM_PANEL = preload("res://ui/item/item.tscn")
 
 @export var items : Dictionary[Load.Items, int] = {Load.Items.BOUNCE: 1, Load.Items.SWING: 1, Load.Items.BOMB: 3}
 @export var item_container : Control
 @export var dock : Node2D
 @export var world_items_parent: Node2D
 
-
 var selected_item_panel : ItemPanel
 var selected_item: Load.Items
 
-const ITEM_PANEL = preload("res://ui/item/item.tscn")
+@onready var panel : PanelContainer= %MenuPanel
+@onready var restart : Button = %Restart
+@onready var exit : Button = %Exit
 
 func _ready() -> void:
 	Input.set_custom_mouse_cursor(Load.mouse)
 	panel.mouse_entered.connect(_mouse_on_panel.bind(true))
 	panel.mouse_exited.connect(_mouse_on_panel.bind(false))
 	_add_items_to_panel()
+	restart.pressed.connect(_restart)
+	exit.pressed.connect(_exit)
 
 func _shoot_item() -> void:
+	if selected_item_panel == null:
+		return
+	if selected_item_panel.amount <= 0:
+		return
+	selected_item_panel._Set_Amount(selected_item_panel.amount - 1)
 	var new_item = Load.items[selected_item].item_node.instantiate()
-	print("shoots")
 	world_items_parent.add_child(new_item)
 	new_item.global_position = dock.cursor.global_position
 
@@ -61,4 +68,11 @@ func _mouse_on_panel(is_on):
 	else:
 		Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 
+
+func _restart(): 
+	get_tree().reload_current_scene()
+
+func _exit(): 
+	get_tree().change_scene_to_file(Load.title)
+	
 

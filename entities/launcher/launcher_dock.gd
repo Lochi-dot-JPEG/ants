@@ -67,3 +67,13 @@ func _test() -> void:
 	get_node("..").add_child(new_creature)
 	new_creature.global_position = spawn.global_position
 	new_creature._move_in_direction(1)
+	new_creature.win.connect(_win.bind(new_creature))
+
+func _win(creature) -> void:
+	for i in creatures:
+		i.aim_direction = 0
+	for goal in get_tree().get_nodes_in_group("goal"):
+		goal.get_node("%Sprite").play("picked")
+	
+	# TODO
+

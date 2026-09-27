@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+signal win(creature)
+
 enum State {WALKING, SWINGING, FINISHED}
 
 const SPEED = 200
@@ -23,7 +25,7 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	particles.emitting = state == State.WALKING
+	particles.emitting = state == State.WALKING && aim_direction != 0
 	_animate()
 
 
@@ -105,3 +107,5 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		velocity.y = 0
 		swing_time = 0
 		swing_origin = area.global_position
+	if area.is_in_group("goal"):
+		win.emit()

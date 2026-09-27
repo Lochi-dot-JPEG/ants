@@ -9,6 +9,7 @@ class ItemInfo:
 		name = _name
 		item_node = _node
 
+const title = "res://ui/title/title.tscn"
 const mouse = preload("res://ui/mouse.tres")
 const creature = preload("res://entities/creature/creature.tscn")
 
