@@ -2,9 +2,21 @@
 
 [ext_resource type="Script" uid="uid://ba6rap1jmgjw3" path="res://entities/creature/creature.gd" id="1_on7fs"]
 [ext_resource type="SpriteFrames" uid="uid://b37o3tka3pcg" path="res://entities/player/player.aseprite" id="2_rusqg"]
+[ext_resource type="Texture2D" uid="uid://conskaqf1b8s" path="res://locations/tilemap.png" id="3_wvp24"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_how2o"]
 size = Vector2(16, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ads0q"]
+atlas = ExtResource("3_wvp24")
+region = Rect2(88, 0, 8, 8)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7otxv"]
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 2.0
+initial_velocity_max = 3.0
+gravity = Vector3(0, 0, 0)
 
 [node name="Creature" type="CharacterBody2D" unique_id=213466299]
 collision_layer = 2
@@ -23,5 +35,12 @@ shape = SubResource("RectangleShape2D_how2o")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" unique_id=305007411]
 position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_how2o")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=736428518]
+emitting = false
+amount = 128
+texture = SubResource("AtlasTexture_ads0q")
+lifetime = 5.0
+process_material = SubResource("ParticleProcessMaterial_7otxv")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
