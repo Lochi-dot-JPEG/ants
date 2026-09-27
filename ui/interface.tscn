@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://trcifh5rm7ih"]
 
-[ext_resource type="Theme" uid="uid://cwnk5k4r74p5s" path="res://ui/theme.tres" id="1_6ooai"]
+[ext_resource type="Theme" uid="uid://cwnk5k4r74p5s" path="res://ui/theme/theme.tres" id="1_6ooai"]
 [ext_resource type="PackedScene" uid="uid://bfxkr2ghs2k1e" path="res://ui/item/item.tscn" id="1_ao8gb"]
 [ext_resource type="Script" uid="uid://dfos8ypnew5cb" path="res://ui/interface.gd" id="2_1kkh5"]
 
@@ -66,3 +66,47 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 4
 text = "exit"
+
+[node name="Win" type="Control" parent="." unique_id=1603702383]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Win" unique_id=1967839325]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -53.0
+offset_top = -20.0
+offset_right = 53.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Win/PanelContainer" unique_id=1363647483]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Win/PanelContainer/MarginContainer" unique_id=2064868103]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Win/PanelContainer/MarginContainer/VBoxContainer" unique_id=1152492387]
+layout_mode = 2
+text = "Fruit obtained!"
+
+[node name="Next" type="Button" parent="Win/PanelContainer/MarginContainer/VBoxContainer" unique_id=1004470810]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Next Level"
+
+[node name="Title" type="Button" parent="Win/PanelContainer/MarginContainer/VBoxContainer" unique_id=419230692]
+unique_name_in_owner = true
+layout_mode = 2
+text = "to title"

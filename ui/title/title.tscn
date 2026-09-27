@@ -1,5 +1,10 @@
 [gd_scene format=3 uid="uid://buiqq3446tykt"]
 
+[ext_resource type="Script" uid="uid://mx1qt3aimgwj" path="res://ui/title/title.gd" id="1_7vilc"]
+[ext_resource type="Texture2D" uid="uid://cnrlprw5dv0jo" path="res://locations/background4.png" id="2_6wqi4"]
+[ext_resource type="Texture2D" uid="uid://bc0u14ww4jol7" path="res://locations/background3.png" id="3_e5i0f"]
+[ext_resource type="Texture2D" uid="uid://ttjy2ygcv410" path="res://locations/background2.png" id="4_iiifq"]
+
 [node name="Title" type="Control" unique_id=1234402939]
 layout_mode = 3
 anchors_preset = 15
@@ -7,3 +12,64 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_7vilc")
+
+[node name="Parallax2D3" type="Parallax2D" parent="." unique_id=543983146]
+scroll_scale = Vector2(0.1, 0)
+scroll_offset = Vector2(344, 160.036)
+repeat_size = Vector2(480, 0)
+repeat_times = 5
+
+[node name="Background4" type="Sprite2D" parent="Parallax2D3" unique_id=803053408]
+texture = ExtResource("2_6wqi4")
+
+[node name="Parallax2D2" type="Parallax2D" parent="." unique_id=1914981762]
+scroll_scale = Vector2(0.25, 0)
+scroll_offset = Vector2(344, 160)
+repeat_size = Vector2(480, 0)
+repeat_times = 5
+
+[node name="Background3" type="Sprite2D" parent="Parallax2D2" unique_id=2025153495]
+texture = ExtResource("3_e5i0f")
+
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=1008036890]
+scroll_scale = Vector2(0.5, 0)
+scroll_offset = Vector2(344, 160)
+repeat_size = Vector2(480, 0)
+repeat_times = 5
+
+[node name="Background2" type="Sprite2D" parent="Parallax2D" unique_id=1323335087]
+texture = ExtResource("4_iiifq")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=24695234]
+unique_name_in_owner = true
+position = Vector2(240, 160)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=977665624]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer" unique_id=185134547]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -67.0
+offset_top = -46.5
+offset_right = 67.0
+offset_bottom = 46.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer" unique_id=971266468]
+layout_mode = 2
+text = "Game name here"
+
+[node name="Play" type="Button" parent="CanvasLayer/VBoxContainer" unique_id=744165612]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Play"
+
+[node name="Levels" type="Button" parent="CanvasLayer/VBoxContainer" unique_id=1591723143]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Levels"

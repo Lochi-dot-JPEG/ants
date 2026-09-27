@@ -1,6 +1,8 @@
 class_name LauncherDock
 extends Area2D
 
+signal win
+
 const SPEED = 150
 
 @export var bounds : CollisionShape2D
@@ -70,6 +72,7 @@ func _test() -> void:
 	new_creature.win.connect(_win.bind(new_creature))
 
 func _win(creature) -> void:
+	win.emit()
 	for i in creatures:
 		i.aim_direction = 0
 	for goal in get_tree().get_nodes_in_group("goal"):

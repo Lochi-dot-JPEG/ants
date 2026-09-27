@@ -12,7 +12,10 @@ var selected_item: Load.Items
 
 @onready var panel : PanelContainer= %MenuPanel
 @onready var restart : Button = %Restart
+@onready var win_label : Control = %Win
 @onready var exit : Button = %Exit
+@onready var next_button : Button = %Next
+@onready var title_button : Button = %Title
 
 func _ready() -> void:
 	Input.set_custom_mouse_cursor(Load.mouse)
@@ -21,6 +24,15 @@ func _ready() -> void:
 	_add_items_to_panel()
 	restart.pressed.connect(_restart)
 	exit.pressed.connect(_exit)
+	dock.win.connect(_win)
+	next_button.pressed.connect(Load._next_level)
+	title_button.pressed.connect(_exit)
+	win_label.hide()
+
+
+func _win() -> void:
+	win_label.show()
+	panel.hide()
 
 func _shoot_item() -> void:
 	if selected_item_panel == null:
