@@ -1,8 +1,19 @@
-extends Control
+extends Node
 
 func _ready() -> void:
+	Input.set_custom_mouse_cursor(Load.mouse)
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	%Levels.pressed.connect(_levels)
 	%Play.pressed.connect(_play)
+	%Back.pressed.connect(_back)
+	%Play.pressed.connect(_play)
+	for level in Load.levels.size():
+		var _button = Button.new()
+		_button.text = str(level)
+		_button.pressed.connect(Load._open_level.bind(level))
+		%LevelSelect.add_child(_button)
+
+
 
 func _process(delta: float) -> void:
 	%Camera2D.position.x += delta * 100
@@ -12,6 +23,9 @@ func _play() -> void:
 
 
 func _levels() -> void:
-	pass
+	%Menu.hide()
+	%LevelSelect.show()
 
-# TODO
+func _back() -> void:
+	%Menu.show()
+	%LevelSelect.hide()
