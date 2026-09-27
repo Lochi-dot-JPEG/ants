@@ -25,6 +25,10 @@ bounds = NodePath("CollisionShape2D2")
 position = Vector2(263.5, -147.5)
 shape = SubResource("RectangleShape2D_ads0q")
 
+[node name="Items" type="Node2D" parent="." unique_id=1167308504]
+
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=45515474]
 
-[node name="Interface" parent="CanvasLayer" unique_id=1974004815 instance=ExtResource("5_n3cnl")]
+[node name="Interface" parent="CanvasLayer" unique_id=1974004815 node_paths=PackedStringArray("dock", "world_items_parent") instance=ExtResource("5_n3cnl")]
+dock = NodePath("../../Dock")
+world_items_parent = NodePath("../../Items")

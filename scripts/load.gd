@@ -3,9 +3,11 @@ extends Node
 class ItemInfo:
 	var texture : Texture2D
 	var name : String
-	func _init(_texture, _name) -> void:
+	var item_node : PackedScene
+	func _init(_texture, _name, _node) -> void:
 		texture = _texture
 		name = _name
+		item_node = _node
 
 const mouse = preload("res://ui/mouse.tres")
 
@@ -14,10 +16,12 @@ enum Items {BOUNCE,SWING}
 var items : Dictionary[Items, ItemInfo] = {
 	Items.BOUNCE:ItemInfo.new(
 		preload("res://ui/item/item-b.tres"), 
-		"Bounce"
+		"Bounce",
+		preload("res://entities/bounce/bounce.tscn"),
 	),
 	Items.SWING:ItemInfo.new(
 		preload("res://ui/item/item-a.tres"), 
-		"Swing"
+		"Swing",
+		preload("res://entities/swing/swing.tscn"),
 	),
 }

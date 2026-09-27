@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://c40r4c28ptnf8"]
+
+[ext_resource type="Texture2D" uid="uid://t3e80xr6aqf6" path="res://entities/swing/swing.tres" id="1_vbqs8"]
+
+[node name="Swing" type="Node2D" unique_id=1742494859]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2078166800]
+texture = ExtResource("1_vbqs8")
