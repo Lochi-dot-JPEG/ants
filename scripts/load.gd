@@ -12,7 +12,7 @@ class ItemInfo:
 const mouse = preload("res://ui/mouse.tres")
 const creature = preload("res://entities/creature/creature.tscn")
 
-enum Items {BOUNCE,SWING}
+enum Items {BOUNCE,SWING,BOMB}
 
 var items : Dictionary[Items, ItemInfo] = {
 	Items.BOUNCE:ItemInfo.new(
@@ -24,5 +24,10 @@ var items : Dictionary[Items, ItemInfo] = {
 		preload("res://ui/item/item-a.tres"), 
 		"Swing",
 		preload("res://entities/swing/swing.tscn"),
+	),
+	Items.BOMB:ItemInfo.new(
+		preload("res://ui/item/item-c.tres"), 
+		"Bomb",
+		preload("res://entities/bomb/bomb.tscn"),
 	),
 }

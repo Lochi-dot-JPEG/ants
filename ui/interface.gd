@@ -2,7 +2,7 @@ extends Control
 
 @onready var panel :PanelContainer= %MenuPanel
 
-@export var items : Dictionary[Load.Items, int] = {Load.Items.BOUNCE: 1, Load.Items.SWING: 1}
+@export var items : Dictionary[Load.Items, int] = {Load.Items.BOUNCE: 1, Load.Items.SWING: 1, Load.Items.BOMB: 3}
 @export var item_container : Control
 @export var dock : Node2D
 @export var world_items_parent: Node2D
@@ -51,7 +51,7 @@ func _select_item(item_node : ItemPanel):
 	selected_item = item_node.type
 
 
-func _input(event: InputEvent) -> void:
+func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("shoot"):
 		_shoot_item()
 

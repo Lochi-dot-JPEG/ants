@@ -8,7 +8,7 @@ const ACCELERATION = 300.0
 const TURN_ACCELERATION = 2600.0
 const BOUNCE_VELOCITY = -400.0
 const SWING_LAUNCH = Vector2(400, -200)
-const SWING_LENGTH = 0.5
+const SWING_LENGTH = 0.7
 
 var aim_direction = 1
 var state : State = State.WALKING
@@ -68,9 +68,9 @@ func _animate() -> void:
 		sprite.play("swing")
 		var rot = 0
 		if aim_direction > 0:
-			rot = TAU/4 -cos(-swing_time * 12) * 1.5
-		else:
 			rot = TAU/4 +cos(-swing_time * 12) * 1.5
+		else:
+			rot = TAU/4 -cos(-swing_time * 12) * 1.5
 		global_position = swing_origin + Vector2(cos(rot), sin(rot)) * 15
 		rotation = rot - PI/2
 		return
@@ -89,6 +89,8 @@ func _animate() -> void:
 
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
+	if state == State.SWINGING:
+		return
 	if area.is_in_group("bounce"):
 		velocity.y = BOUNCE_VELOCITY
 		velocity.x /= 5
