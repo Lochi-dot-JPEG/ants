@@ -20,15 +20,17 @@ func _process(_delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
+
 	if is_on_wall():
-		velocity.x = -velocity.x
+		aim_direction =  sign(get_wall_normal().x)
 	if aim_direction == 0:
-		velocity.x = move_toward(velocity.x, 0, delta* DECELERATION)
+		velocity.x = move_toward(velocity.x, 0, delta * DECELERATION)
 	else:
 		if sign(aim_direction) == sign(velocity.x):
 			velocity.x = move_toward(velocity.x, aim_direction * SPEED, delta * ACCELERATION)
 		else:
 			velocity.x = move_toward(velocity.x, aim_direction * SPEED, delta * TURN_ACCELERATION)
+			
 	move_and_slide()
 
 
