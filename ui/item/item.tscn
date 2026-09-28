@@ -10,9 +10,10 @@ script = ExtResource("1_vr0ti")
 button = NodePath("Button")
 
 [node name="Button" type="Button" parent="." unique_id=1310108623]
+custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
 toggle_mode = true
-text = "Use this"
+text = "this"
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1106588935]
 custom_minimum_size = Vector2(0, 32)
