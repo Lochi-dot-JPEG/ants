@@ -3,3 +3,4 @@
 /android/
 .wakatime-project
 addons/godot_super-wakatime
+.export/

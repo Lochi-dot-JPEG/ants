@@ -18,14 +18,12 @@ var swing_time := 0.0
 var swing_origin : Vector2
 
 @onready var sprite = $AnimatedSprite2D
-@onready var particles = $GPUParticles2D
 
 func _ready() -> void:
 	pass
 
 
 func _process(_delta: float) -> void:
-	particles.emitting = state == State.WALKING && aim_direction != 0
 	_animate()
 
 

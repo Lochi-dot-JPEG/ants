@@ -27,8 +27,8 @@ const levels = [
 	"res://locations/lvl-4.tscn",
 	"res://locations/lvl-5.tscn",
 	"res://locations/lvl-6.tscn",
-	"res://locations/lvl-7.tscn",
-	"res://locations/lvl-8.tscn",
+#	"res://locations/lvl-7.tscn",
+#	"res://locations/lvl-8.tscn",
 	#"res://locations/test-area.tscn",
 ]
 
@@ -54,9 +54,11 @@ func _next_level() -> void:
 	_open_level(current_level_number + 1)
 
 func _open_level(number : int) -> void:
-	if levels.size() <= number:
+	if levels.size() == number:
+		get_tree().change_scene_to_file("res://ui/win.tscn")
+		return
+	if levels.size() < number:
 		printerr("No level here")
 		return
-	# TODO if at the last level, change to a winning screen
 	get_tree().change_scene_to_file(levels[number])
 	current_level_number = number

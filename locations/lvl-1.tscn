@@ -10,7 +10,6 @@ tile_map_data = PackedByteArray("AAD+/wQAAAAJAAAAAAD//wQAAAAJAAAAAAAAAAQAAAAJAAA
 [node name="Interface" parent="CanvasLayer" parent_id_path=PackedInt32Array(45515474) index="0" unique_id=1974004815]
 items = Dictionary[int, int]({
 0: 3,
-1: 1,
 2: 2
 })
 

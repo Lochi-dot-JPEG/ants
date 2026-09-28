@@ -59,6 +59,7 @@ func _end_test():
 
 func _win() -> void:
 	win_label.show()
+	Sound._play_sound("win")
 	panel.hide()
 
 func _shoot_item() -> void:
